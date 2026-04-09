@@ -118,6 +118,3 @@ Le code source de l'application desktop n'est pas public. Ce dépôt contient un
 - **Support** : support@rofecare.com
 - **Sécurité** : security@rofecare.com
 
----
-
-**Made with ❤️ in Kinshasa, for Africa.**
