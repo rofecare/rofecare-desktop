@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Support utilisateur
+    url: mailto:support@rofecare.com
+    about: Pour les questions d'utilisation quotidienne, contactez directement le support.
+  - name: 🔒 Signaler une vulnérabilité
+    url: mailto:security@rofecare.com
+    about: Pour les problèmes de sécurité, merci de contacter directement l'équipe sécurité.
+  - name: 📚 Documentation
+    url: https://github.com/rofecare/rofecare-desktop/tree/main/docs
+    about: Consulter d'abord la documentation avant d'ouvrir une issue.
+  - name: 🌐 Site officiel
+    url: https://rofecare.com
+    about: Site web officiel de Rofecare.

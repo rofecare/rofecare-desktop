@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Backups
+*.bak
+*~
+
+# Build outputs (si on ajoute un site statique plus tard)
+dist/
+build/
+node_modules/
