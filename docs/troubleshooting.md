@@ -44,7 +44,7 @@ Rofecare refuse de démarrer si le disque système n'est pas chiffré. Activez :
 
 ### "Première connexion nécessite internet"
 
-Le premier login sur un appareil nécessite obligatoirement une connexion internet, pour contacter `api.rofecare.com` et récupérer votre clé de tenant.
+Le premier login sur un appareil nécessite obligatoirement une connexion internet, pour contacter `api.rofecare.com` et récupérer votre clé de group.
 
 **Solution** : se connecter à internet (même temporairement) pour le premier login, puis vous pourrez travailler offline.
 
@@ -83,7 +83,7 @@ Dans une clinique avec plusieurs postes :
 
 1. Vérifier que tous les postes sont sur le **même réseau local** (même WiFi ou LAN filaire)
 2. Vérifier que mDNS/Bonjour n'est pas bloqué par le firewall
-3. Vérifier que tous les postes utilisent le **même tenant** (le même hôpital)
+3. Vérifier que tous les postes utilisent le **même group** (le même hôpital)
 4. Redémarrer Rofecare sur les postes concernés
 
 **Test de connectivité mDNS** :

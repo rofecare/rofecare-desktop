@@ -60,8 +60,8 @@ Saisissez vos identifiants et cliquez sur **Se connecter**.
 **Au premier login**, l'application contacte `api.rofecare.com` pour :
 
 1. Vérifier vos identifiants
-2. Identifier votre tenant (hôpital)
-3. Télécharger la clé de chiffrement de votre tenant
+2. Identifier votre group (hôpital)
+3. Télécharger la clé de chiffrement de votre group
 4. Vous "attacher" à ce poste de travail
 
 > ⚠ **Si vous n'avez pas de connexion internet au premier login**, l'application refusera de vous connecter avec le message : "Première connexion nécessite internet". C'est une mesure de sécurité.

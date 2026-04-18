@@ -43,7 +43,7 @@ Votre firewall et routeur clinique doivent autoriser :
 
 Avant d'installer quoi que ce soit sur les postes, l'admin de la clinique doit créer les comptes utilisateurs sur `rofecare.com` :
 
-1. Se connecter à `https://app.rofecare.com` en tant qu'admin tenant
+1. Se connecter à `https://app.rofecare.com` en tant qu'admin group
 2. Aller dans **Administration** → **Utilisateurs**
 3. Créer un compte pour chaque employé (médecins, infirmiers, accueil, etc.)
 4. Assigner les rôles appropriés
@@ -57,7 +57,7 @@ Choisir un **poste principal** (ex. le PC du bureau administratif, un mini-PC d�
 2. Installer sur le poste
 3. Lancer l'application
 4. **Premier login** (internet requis) avec un compte admin
-5. Au wizard d'import initial : choisir **"Tenant vide"** (si nouvelle clinique) ou **"Importer depuis le cloud"** (si migration depuis `app.rofecare.com`)
+5. Au wizard d'import initial : choisir **"Group vide"** (si nouvelle clinique) ou **"Importer depuis le cloud"** (si migration depuis `app.rofecare.com`)
 6. Attendre la fin de l'import (durée variable selon le volume)
 7. Vérifier que l'application fonctionne
 
@@ -157,7 +157,7 @@ Certaines cliniques demandent s'il faut un "serveur Rofecare" dédié. **Non, pa
 
 ### Postes détectés mais pas de sync
 
-1. Vérifier que les postes ont bien le **même tenant** (même hôpital)
+1. Vérifier que les postes ont bien le **même group** (même hôpital)
 2. Vérifier les logs : Menu Aide → Diagnostics
 3. Contacter le support avec les logs : support@rofecare.com
 
@@ -186,7 +186,7 @@ Concrètement :
 
 - **Chiffrement du WiFi clinique** : WPA2 ou WPA3 obligatoire
 - **Isolation de l'accès invité** : les WiFi "visiteurs" ne doivent pas être sur le même réseau que les postes Rofecare
-- **JWT Mercure** : même si un intrus se connecte au WiFi clinique, il ne peut pas se faire passer pour un peer sans la clé JWT du tenant (stockée dans le keychain OS)
+- **JWT Mercure** : même si un intrus se connecte au WiFi clinique, il ne peut pas se faire passer pour un peer sans la clé JWT du group (stockée dans le keychain OS)
 
 ## Prochaines étapes
 

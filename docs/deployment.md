@@ -8,7 +8,7 @@ Un déploiement Rofecare Desktop typique suit ces étapes :
 
 ```
 Phase 1 : Préparation cloud (1h)
-    └─► Créer le tenant Rofecare
+    └─► Créer le group Rofecare
     └─► Créer les comptes utilisateurs
     └─► Configurer les rôles et permissions
 
@@ -34,13 +34,13 @@ Phase 5 : Production (ongoing)
 
 ## Phase 1 — Préparation cloud
 
-### Créer le tenant Rofecare
+### Créer le group Rofecare
 
-Contacter l'équipe Rofecare (`sales@rofecare.com`) pour créer votre tenant (hôpital) dans le cloud. Vous recevrez :
+Contacter l'équipe Rofecare (`sales@rofecare.com`) pour créer votre group (hôpital) dans le cloud. Vous recevrez :
 
-- **URL du tenant** : ex. `https://app.rofecare.com` (commun à tous)
+- **URL du group** : ex. `https://app.rofecare.com` (commun à tous)
 - **Identifiant admin** : email + mot de passe temporaire
-- **Tenant ID** : UUID unique de votre hôpital (vous n'avez pas à le retenir)
+- **Group ID** : UUID unique de votre hôpital (vous n'avez pas à le retenir)
 
 ### Créer les utilisateurs
 
@@ -135,8 +135,8 @@ Si pas de mini-PC dédié : choisir le poste de l'administration ou de la récep
 
 1. Télécharger Rofecare Desktop depuis https://github.com/rofecare/rofecare-desktop/releases/latest
 2. Installer selon le guide [Installation](./installation.md)
-3. Au premier lancement, se connecter avec le compte **admin du tenant**
-4. Wizard : choisir **"Tenant vide (nouveau)"**
+3. Au premier lancement, se connecter avec le compte **admin du group**
+4. Wizard : choisir **"Group vide (nouveau)"**
 5. Attendre l'initialisation (~2 min)
 6. Application prête
 
@@ -230,7 +230,7 @@ Vous pouvez reporter une mise à jour sans la perdre.
 
 ## Check-list de déploiement
 
-- [ ] Tenant cloud créé
+- [ ] Group cloud créé
 - [ ] Comptes utilisateurs créés avec rôles
 - [ ] WiFi clinique : AP Isolation désactivé, WPA2+ activé
 - [ ] Pare-feu des postes : Rofecare autorisé
