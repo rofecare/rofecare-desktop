@@ -145,10 +145,10 @@ Menu **Données** → **Importer depuis le cloud**. Voir [Premiers pas](./gettin
 ## Sécurité de la sync
 
 - **HTTPS TLS 1.3** entre le poste et le cloud
-- **Isolation par tenant** : votre hôpital ne voit jamais les données d'un autre hôpital
+- **Isolation par group** : votre hôpital ne voit jamais les données d'un autre hôpital
 - **JWT signé** : chaque requête de sync est authentifiée
 - **Signature Mercure** : chaque événement publié est signé et vérifié par les récepteurs
-- **Rejet des événements inter-tenants** : même en cas de LAN partagé, les événements d'un autre tenant sont automatiquement rejetés
+- **Rejet des événements inter-groups** : même en cas de LAN partagé, les événements d'un autre group sont automatiquement rejetés
 
 ## Pour aller plus loin
 

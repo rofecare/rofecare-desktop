@@ -22,7 +22,7 @@ Rofecare Desktop est l'application de bureau officielle du système hospitalier 
 
 ### Puis-je utiliser Rofecare Desktop sans compte ?
 
-Non. Rofecare Desktop est réservé aux utilisateurs enregistrés dans un tenant Rofecare (hôpital ou clinique sous contrat).
+Non. Rofecare Desktop est réservé aux utilisateurs enregistrés dans un group Rofecare (hôpital ou clinique sous contrat).
 
 ### Combien coûte Rofecare Desktop ?
 
@@ -90,7 +90,7 @@ Oui :
 - **Au repos** : chiffrement disque du système (FileVault, BitLocker, LUKS)
 - **En transit** : HTTPS/TLS 1.3
 - **Entre postes LAN** : TLS (auto-signé) ou chiffrement WPA2/WPA3 du WiFi clinique
-- **Tenant isolation** : les données de votre hôpital ne sont accessibles qu'à vos utilisateurs
+- **Group isolation** : les données de votre hôpital ne sont accessibles qu'à vos utilisateurs
 
 ### Que se passe-t-il si mon laptop est volé ?
 
@@ -131,7 +131,7 @@ Chaque session Rofecare est verrouillée après 15 minutes d'inactivité.
 
 ### Les administrateurs Rofecare ont-ils accès à mes données ?
 
-Rofecare (l'équipe) a **uniquement accès à vos données en cas d'intervention technique explicite** de votre part (ticket support). Sinon, vos données sont isolées dans votre tenant.
+Rofecare (l'équipe) a **uniquement accès à vos données en cas d'intervention technique explicite** de votre part (ticket support). Sinon, vos données sont isolées dans votre group.
 
 Les administrateurs de **votre hôpital** (ex. le DG de la clinique) ont accès aux données selon les rôles qu'ils se sont attribués.
 

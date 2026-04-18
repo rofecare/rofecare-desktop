@@ -7,7 +7,7 @@ Application desktop officielle de **Rofecare** — système de gestion hospitali
 - **Fonctionnement hors-ligne** — base de données et serveur embarqués, aucune connexion internet requise en utilisation quotidienne
 - **Synchronisation automatique** — sync avec le cloud Rofecare dès qu'une connexion est détectée
 - **Mesh local** — plusieurs postes d'une même clinique partagent leurs données en temps réel via le réseau local
-- **Sécurité** — chiffrement des données, isolation multi-tenant, authentification cloud
+- **Sécurité** — chiffrement des données, isolation multi-group, authentification cloud
 - **Multi-plateforme** — macOS, Linux, Windows
 - **Mises à jour automatiques** — signées cryptographiquement
 
@@ -43,7 +43,7 @@ Rofecare Desktop suit des pratiques de sécurité strictes pour protéger les do
 
 - Chiffrement obligatoire du disque système (FileVault, BitLocker, LUKS)
 - Authentification centralisée via le cloud Rofecare
-- Isolation stricte multi-tenant (cloison entre hôpitaux)
+- Isolation stricte multi-group (cloison entre hôpitaux)
 - Tokens JWT à durée limitée
 - Signature cryptographique des mises à jour (Minisign)
 
@@ -69,10 +69,10 @@ Rofecare Desktop vérifie automatiquement les mises à jour au démarrage et tou
 
 Pour un déploiement dans une clinique :
 
-1. **Un hôpital = un tenant** dans Rofecare cloud
+1. **Un hôpital = un group** dans Rofecare cloud
 2. Créer les comptes utilisateurs via l'interface admin sur `rofecare.com`
 3. Installer Rofecare Desktop sur chaque poste de la clinique
-4. Le **premier démarrage de chaque poste nécessite une connexion internet** (pour attacher l'utilisateur au tenant)
+4. Le **premier démarrage de chaque poste nécessite une connexion internet** (pour attacher l'utilisateur au group)
 5. Ensuite, les postes se découvrent automatiquement sur le LAN de la clinique et partagent leurs données
 
 Voir le [guide de déploiement](./docs/deployment.md) pour plus de détails.
