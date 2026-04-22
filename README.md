@@ -101,7 +101,7 @@ Voir le [guide de déploiement](./docs/deployment.md) pour plus de détails.
 
 ## 🌍 Langues
 
-Rofecare supporte 13 langues dont français, anglais, portugais, swahili, lingala, et d'autres langues africaines.
+Rofecare maintient activement deux langues : français (source) et anglais (cible).
 
 ## 📜 Licence
 
