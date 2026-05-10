@@ -1,120 +1,66 @@
-# Rofecare Desktop
+# rofecare-desktop
 
-Application desktop officielle de **Rofecare** — système de gestion hospitalière multi-spécialités conçu pour l'Afrique centrale.
+> Application desktop officielle Rofecare. Tauri V2 offline-first, SQLite local + sync CRDT vers le monolithe via mTLS.
 
-## ✨ Caractéristiques
+## Mission
 
-- **Fonctionnement hors-ligne** — base de données et serveur embarqués, aucune connexion internet requise en utilisation quotidienne
-- **Synchronisation automatique** — sync avec le cloud Rofecare dès qu'une connexion est détectée
-- **Mesh local** — plusieurs postes d'une même clinique partagent leurs données en temps réel via le réseau local
-- **Sécurité** — chiffrement des données, isolation multi-group, authentification cloud
-- **Multi-plateforme** — macOS, Linux, Windows
-- **Mises à jour automatiques** — signées cryptographiquement
+Permettre aux établissements de santé en zones à connectivité instable (Afrique centrale) d'utiliser Rofecare **en mode offline-first** : toutes les opérations cliniques s'effectuent localement contre une base SQLite chiffrée, puis sont synchronisées en arrière-plan vers `rofecare-server` via mTLS dès que la connexion est disponible.
 
-## 📥 Télécharger
+> **V1 (sidecars) archivée 2026-04-17.** Le repo héberge désormais uniquement V2 (Tauri + SQLite + CRDT + mTLS). Spec complète : [`docs/`](docs/) et `desktop/spec/` à la racine workspace.
 
-| Plateforme | Format | Lien |
-|------------|--------|------|
-| 🍎 **macOS** (Intel + Apple Silicon) | DMG | [Rofecare.dmg](https://github.com/rofecare/rofecare-desktop/releases/latest) |
-| 🐧 **Linux** (Ubuntu, Debian) | AppImage | [Rofecare.AppImage](https://github.com/rofecare/rofecare-desktop/releases/latest) |
-| 🐧 **Linux** (Debian/Ubuntu) | .deb | [rofecare.deb](https://github.com/rofecare/rofecare-desktop/releases/latest) |
-| 🐧 **Linux** (Fedora/RHEL) | .rpm | [rofecare.rpm](https://github.com/rofecare/rofecare-desktop/releases/latest) |
-| 🪟 **Windows 10/11** | Installeur | [Rofecare-setup.exe](https://github.com/rofecare/rofecare-desktop/releases/latest) |
-| 🪟 **Windows 10/11** | MSI | [Rofecare.msi](https://github.com/rofecare/rofecare-desktop/releases/latest) |
+## Stack
 
-> **Taille** : environ 250-300 MB par installeur (embarque PostgreSQL, JRE 21, serveur Spring Boot et hub de synchronisation Mercure).
+- Tauri 2 (Rust core + WebView)
+- Frontend : Nuxt build de `rofecare-frontend/apps/clinic` chargé dans la WebView Tauri
+- SQLite (chiffrée SQLCipher) — base locale
+- CRDT (Automerge ou équivalent) — résolution de conflits hors-ligne
+- mTLS — auth machine vers le monolithe pour la sync peer
+- Plateformes cibles : Windows 10/11, macOS 12+, Linux Ubuntu 22.04+
 
-Consultez toutes les versions : [**Releases**](https://github.com/rofecare/rofecare-desktop/releases)
+## Structure
 
-## 📚 Documentation
+```
+rofecare-desktop/
+├── src-tauri/        # Cœur Rust (commandes Tauri, sync engine, mTLS, SQLite)
+├── docs/             # Architecture V2, ADRs, runbooks
+├── AGENTS.md         # Configuration agents Claude pour ce repo
+├── CHANGELOG.md
+└── LICENSE
+```
 
-- **[Installation](./docs/installation.md)** — Comment installer Rofecare Desktop sur votre système
-- **[Premiers pas](./docs/getting-started.md)** — Configuration initiale, premier login, import des données
-- **[Réseau local](./docs/lan-setup.md)** — Comment partager une base de données entre plusieurs postes de la clinique
-- **[Synchronisation](./docs/sync.md)** — Comment fonctionne la sync cloud + mesh LAN
-- **[Dépannage](./docs/troubleshooting.md)** — Problèmes courants et solutions
-- **[FAQ](./docs/faq.md)** — Questions fréquentes
+(Le frontend Vue n'est pas dupliqué ici — il est consommé depuis `rofecare-frontend/apps/clinic` à la build.)
 
-Toute la documentation est également disponible dans le [Wiki](../../wiki).
+## Build
 
-## 🔒 Sécurité
+Pré-requis : Rust stable, Node 20+, pnpm. Voir `docs/` pour le bootstrap complet par OS.
 
-Rofecare Desktop suit des pratiques de sécurité strictes pour protéger les données médicales :
+```bash
+# Dev
+pnpm tauri dev
 
-- Chiffrement obligatoire du disque système (FileVault, BitLocker, LUKS)
-- Authentification centralisée via le cloud Rofecare
-- Isolation stricte multi-group (cloison entre hôpitaux)
-- Tokens JWT à durée limitée
-- Signature cryptographique des mises à jour (Minisign)
+# Build release (génère installeurs natifs par plateforme)
+pnpm tauri build
+```
 
-Pour signaler une vulnérabilité : [security@rofecare.com](mailto:security@rofecare.com)
+## Tests
 
-## 🐛 Signaler un bug
+```bash
+cargo test                 # tests Rust (sync engine, CRDT, mTLS)
+pnpm tauri test            # tests E2E webview
+```
 
-Merci de signaler les bugs rencontrés :
+## Dépendances inter-repos
 
-1. Consultez d'abord le [Dépannage](./docs/troubleshooting.md) et les [issues existantes](../../issues)
-2. Si votre problème n'y figure pas : [ouvrir une nouvelle issue](../../issues/new/choose)
-3. Précisez : version Rofecare, OS, étapes de reproduction, logs si disponibles
+- **Consomme** : `rofecare-frontend/apps/clinic` (frontend chargé dans la webview), `rofecare-server` (sync mTLS via `rofecare-service-platform` peer-sync)
+- **Consommé par** : aucun
 
-## 💡 Proposer une fonctionnalité
+## Roadmap
 
-Les suggestions d'amélioration sont bienvenues : [nouvelle feature request](../../issues/new?template=feature_request.md).
+234 tâches `T001`-`T234` en 12 phases (~22 semaines). Avancement : `progress_desktop_foundations.md` (mémoire workspace).
 
-## 🔄 Mises à jour automatiques
+## Liens utiles
 
-Rofecare Desktop vérifie automatiquement les mises à jour au démarrage et toutes les 4 heures. Les mises à jour sont signées cryptographiquement — impossible d'installer une mise à jour corrompue ou altérée.
-
-## 🤝 Déploiement en clinique
-
-Pour un déploiement dans une clinique :
-
-1. **Un hôpital = un group** dans Rofecare cloud
-2. Créer les comptes utilisateurs via l'interface admin sur `rofecare.com`
-3. Installer Rofecare Desktop sur chaque poste de la clinique
-4. Le **premier démarrage de chaque poste nécessite une connexion internet** (pour attacher l'utilisateur au group)
-5. Ensuite, les postes se découvrent automatiquement sur le LAN de la clinique et partagent leurs données
-
-Voir le [guide de déploiement](./docs/deployment.md) pour plus de détails.
-
-## 📋 Configuration requise
-
-### macOS
-- macOS 11 (Big Sur) ou supérieur
-- 4 GB RAM minimum, 8 GB recommandé
-- 2 GB d'espace disque libre
-- **FileVault activé** (obligatoire)
-
-### Linux
-- Ubuntu 22.04+, Debian 12+, Fedora 38+ ou équivalent
-- WebKit2GTK 4.1
-- 4 GB RAM minimum, 8 GB recommandé
-- 2 GB d'espace disque libre
-- **LUKS ou équivalent activé** (obligatoire)
-
-### Windows
-- Windows 10 version 1809 ou supérieur, Windows 11
-- WebView2 Runtime (installé automatiquement si absent)
-- 4 GB RAM minimum, 8 GB recommandé
-- 2 GB d'espace disque libre
-- **BitLocker activé** (obligatoire)
-
-## 🌍 Langues
-
-Rofecare maintient activement deux langues : français (source) et anglais (cible).
-
-## 📜 Licence
-
-- **Documentation, supports, issue templates** : [MIT License](./LICENSE)
-- **Code source de l'application** : Propriétaire — © 2026 Rofecare. Tous droits réservés.
-
-Le code source de l'application desktop n'est pas public. Ce dépôt contient uniquement les **ressources de distribution** (binaires, documentation, issues).
-
-## 🔗 Liens
-
-- **Site officiel** : https://rofecare.com
-- **Application web** : https://app.rofecare.com
-- **Documentation technique** : https://docs.rofecare.com
-- **Support** : support@rofecare.com
-- **Sécurité** : security@rofecare.com
-
+- Vue d'ensemble workspace : [`../CLAUDE.md`](../CLAUDE.md)
+- Spec V2 complète : `../specs/` + `docs/`
+- AGENTS desktop : [`AGENTS.md`](AGENTS.md)
+- CHANGELOG : [`CHANGELOG.md`](CHANGELOG.md)
