@@ -4,7 +4,10 @@ Toutes les versions publiques de Rofecare Desktop sont listées ici.
 
 Format basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versioning [SemVer](https://semver.org/lang/fr/).
 
-## [Unreleased]
+## [Unreleased] - 2026-05-16
+
+### Documentation
+- [Desktop] Refresh README and gitignore ([1ba9210](https://github.com/rofecare/rofecare-desktop/commit/1ba9210))
 
 ### Prochaine version
 - Architecture mesh peer-to-peer avec Mercure
