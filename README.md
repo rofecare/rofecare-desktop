@@ -51,12 +51,16 @@ pnpm tauri test            # tests E2E webview
 
 ## Dépendances inter-repos
 
-- **Consomme** : `rofecare-frontend/apps/clinic` (frontend chargé dans la webview), `rofecare-server` (sync mTLS via `rofecare-service-platform` peer-sync)
+- **Consomme** : `rofecare-frontend/apps/clinic` (frontend chargé dans la webview), `rofecare-server` (sync mTLS via `rofecare-platform` peer-sync)
 - **Consommé par** : aucun
 
 ## Roadmap
 
 234 tâches `T001`-`T234` en 12 phases (~22 semaines). Avancement : `progress_desktop_foundations.md` (mémoire workspace).
+
+## Conventions
+
+Référentiel Vue côté webview : [`../rofecare-server/.claude/rules/vue-frontend.md`](../rofecare-server/.claude/rules/vue-frontend.md). Pas de mapping statuts/enums côté front — tout vient du backend (`statusLabel`, `statusColor`). Conventional Commits, branche `develop`, commits atomiques. Aucun agent ne commit/push : l'utilisateur passe par `/speckit.commit` + `/speckit.pr`.
 
 ## Liens utiles
 
@@ -64,3 +68,7 @@ pnpm tauri test            # tests E2E webview
 - Spec V2 complète : `../specs/` + `docs/`
 - AGENTS desktop : [`AGENTS.md`](AGENTS.md)
 - CHANGELOG : [`CHANGELOG.md`](CHANGELOG.md)
+
+---
+
+**Statut** : Actif (développement V2 en cours, 234 tâches, ~22 semaines) · V1 archivée 2026-04-17 · dernière mise à jour 2026-05-16.

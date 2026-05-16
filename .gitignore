@@ -13,3 +13,6 @@
 dist/
 build/
 node_modules/
+
+# Wiki dirs (managed externally — never committed)
+wiki/
